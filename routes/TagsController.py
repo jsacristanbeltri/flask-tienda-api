@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from models.TagModel import Tag
 from services.TagService import TagService
+from werkzeug.exceptions import NotFound, BadRequest, InternalServerError
 
 tag = Blueprint('tag', __name__)
 
@@ -15,7 +16,7 @@ def get_tag(id):
     if tag:
         return jsonify(tag)
     else:
-        return jsonify({'message': 'Tag not found'}), 404
+        raise NotFound('Tag with id {} not found'.format(id))
 
 @tag.route('/tags', methods=['POST'])
 def add_tag():
