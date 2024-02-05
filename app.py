@@ -8,10 +8,13 @@ from routes.TagsController import tag
 from routes.AuthController import aut
 from models.SharedModels import db
 from datetime import datetime
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from opentelemetry import trace
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+FlaskInstrumentor().instrument_app(app)
 app.config.from_object(os.getenv('APP_SETTINGS_MODULE'))
 
 db.init_app(app)

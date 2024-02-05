@@ -1,0 +1,35 @@
+version: "3.9"
+
+services: 
+  flask_app:
+    #nombre del contenedor que va a generar. 
+    container_name: flask_app
+    #nombre de la imagen que va a generar
+    image: pee-flask_app:1.0.0
+    #ubicacion del dockerfile para generar la imagen
+    build: .
+    #puertos del contenedor
+    ports:
+      - 5000:5000
+    #Variables de entorno del contenedor
+    environment:
+      - DATABASE_URL=flask_db:5432/listin_py_flask
+      - DATABASE_USERNAME=jsacristan
+      - DATABASE_PASSWORD=jsdutySDS27781doop
+    #Indica si el contenedor depende de otro para retrasar su ejecucion. 
+    depends_on:
+      - flask_db
+  flask_db:
+    container_name: flask_db
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=jsacristan
+      - POSTGRES_PASSWORD=jsdutySDS27781doop
+      - POSTGRES_DB=listin_py_flask
+    #Volumenes para persirtir info. 
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata: {}
