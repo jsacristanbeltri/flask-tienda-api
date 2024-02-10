@@ -26,7 +26,7 @@ MAIL_PORT = 587
 MAIL_USERNAME = 'tu correo'
 MAIL_PASSWORD = 'tu contraseña'
 DONT_REPLY_FROM_EMAIL = 'dirección from'
-ADMINS = ('juanjo@j2logo.com', )
+ADMINS = ('xx@xx.com', )
 MAIL_USE_TLS = True
 MAIL_DEBUG = False
 
