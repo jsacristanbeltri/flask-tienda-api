@@ -1,6 +1,4 @@
-Language: Python
-Framework: Flask
-
+Backend service with Python using Flask framework
 Details: 
 
 CRUD
