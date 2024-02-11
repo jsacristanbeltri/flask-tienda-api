@@ -1,8 +1,8 @@
-Backend service with Python using Flask framework
-Details: 
+Backend service with Python using Flask framework <br>
+Details: <br>
 
-CRUD
-Autentication and authorization
-Database relationship 1:1, 1:N and N:N
-Distributed task queue system with celery
-Pagination and filtering
+CRUD<br>
+Autentication and authorization<br>
+Database relationship 1:1, 1:N and N:N<br>
+Distributed task queue system with celery<br>
+Pagination and filtering<br>
