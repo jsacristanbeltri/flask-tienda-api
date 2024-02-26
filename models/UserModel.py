@@ -1,5 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, ForeignKey, Integer, String
 from models.SharedModels import db
 from models.TagModel import user_tag
 from models.RoleModel import user_roles
@@ -7,9 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import time
 import jwt
 from flask import current_app
-from flask_login import (UserMixin)
 
-#@RBAC.as_user_model
 class User(db.Model):
     __tablename__ = "user"
 
@@ -20,7 +17,6 @@ class User(db.Model):
     language_id = Column(String, ForeignKey('language.id'))
     tags = db.relationship('Tag', secondary=user_tag, backref='user')
     roles = db.relationship('Role', secondary=user_roles, backref='user')
-
 
     def __init__(self, username, password, fullname, language):
         self.username = username

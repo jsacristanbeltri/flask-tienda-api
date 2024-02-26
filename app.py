@@ -10,6 +10,7 @@ from models.SharedModels import db
 from datetime import datetime
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from opentelemetry import trace
+from celery import Celery
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -67,3 +68,13 @@ def register_error_handlers(app):
     
 # Custom error handlers
 register_error_handlers(app)
+
+celery = Celery(
+    __name__,
+    broker="redis://127.0.0.1:6379/0",
+    backend="redis://127.0.0.1:6379/0"
+)
+
+@celery.task
+def add(x, y):
+    return x + y
